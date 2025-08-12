@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulasi Judi Online — Edukasi</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🎰</div>
+        <div>
+          <h1>Simulasi Judol & Gacha</h1>
+          <p class="subtitle">Edukasi: rasakan triknya tanpa rugi</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="openAdmin" title="Panel Bandar (admin)">⚙️ Bandar</button>
+        <button id="toggleSound" title="Toggle sound">🔈</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- Left: Main Play -->
+      <section class="card main-play">
+        <div class="balance-row">
+          <div>Saldo demo: <span id="balance">1000</span> koin</div>
+          <div class="small">Taruhan tiap putaran: <span id="bet">10</span></div>
+        </div>
+
+        <div class="machine">
+          <div id="reel" class="reel">—</div>
+          <div id="resultBadge" class="result-badge">Siap</div>
+        </div>
+
+        <div class="controls">
+          <button id="playOnce" class="btn primary">MAIN SEKALI</button>
+          <button id="play10" class="btn">MAIN 10x</button>
+          <button id="resetStats" class="btn ghost">Reset</button>
+        </div>
+
+        <div class="message" id="message">Tekan MAIN dan rasakan sensasinya. Ingat: ini cuma simulasi edukatif.</div>
+      </section>
+
+      <!-- Right: Info & Stats -->
+      <aside class="card stats">
+        <h3>Statistik</h3>
+        <ul class="stat-list">
+          <li>Total Putaran: <strong id="statTotal">0</strong></li>
+          <li>Menang: <strong id="statWin">0</strong></li>
+          <li>Kalah: <strong id="statLose">0</strong></li>
+          <li>Perc. Menang (aktual): <strong id="statPct">0%</strong></li>
+        </ul>
+
+        <hr />
+
+        <h4>Mode Bandar</h4>
+        <div id="modeLabel">Normal</div>
+        <div class="hint">Panel bandar bisa atur peluang kemenangan & mode teaser.</div>
+
+        <hr />
+
+        <h4>Penjelasan Singkat</h4>
+        <p class="hint small">Sistem demo ini memperlihatkan bagaimana peluang bisa diatur oleh bandar. Jangan coba taruhan nyata.</p>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div>Untuk tujuan edukasi KKN — jangan dipakai untuk judi nyata.</div>
+      <div class="credits">By Tim KKN • Demo</div>
+    </footer>
+  </div>
+
+  <!-- Admin Modal -->
+  <div id="adminModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close" id="closeAdmin">✖</button>
+      <h2>Panel Bandar (Admin)</h2>
+
+      <div class="form-row">
+        <label>Password</label>
+        <input type="password" id="adminPass" placeholder="masukkan password" />
+        <button id="adminLogin" class="btn">Login</button>
+      </div>
+
+      <div id="adminPanel" class="admin-panel hidden">
+        <div class="form-row">
+          <label>Akses Level</label>
+          <div id="adminHint" class="small hint">Anda sebagai Bandar.</div>
+        </div>
+
+        <div class="form-row">
+          <label>Probabilitas Menang (%)</label>
+          <input type="range" id="winProb" min="0" max="100" value="10" />
+          <div class="small">Nilai: <span id="winProbLabel">10%</span></div>
+        </div>
+
+        <div class="form-row">
+          <label>Mode Teaser</label>
+          <select id="teaserMode">
+            <option value="off">OFF</option>
+            <option value="simple">Simple (awal tinggi → turun)</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>Teaser: putaran awal (N)</label>
+          <input type="number" id="teaserRounds" min="1" max="100" value="5" />
+        </div>
+
+        <div class="form-row">
+          <label>Prob. saat Teaser (%)</label>
+          <input type="number" id="teaserProb" min="0" max="100" value="70" />
+        </div>
+
+        <div class="form-row">
+          <label>Near-miss intensity</label>
+          <input type="range" id="nearMiss" min="0" max="100" value="30" />
+          <div class="small">Nilai: <span id="nearMissLabel">30%</span></div>
+        </div>
+
+        <div class="form-row actions-row">
+          <button id="applyAdmin" class="btn primary">Apply</button>
+          <button id="logoutAdmin" class="btn ghost">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup Modal -->
+  <div id="popupModal" class="modal hidden">
+    <div class="modal-card popup-card">
+      <button class="close" id="closePopup">✖</button>
+      <h2 id="popupTitle">Pesan</h2>
+      <p id="popupMessage">Ini adalah isi pesan.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
