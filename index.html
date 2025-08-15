@@ -27,9 +27,23 @@
     <main class="grid">
       <!-- Left: Main Play -->
       <section class="card main-play">
+
+        <!-- Tambahan: Form isi saldo & taruhan -->
+        <div class="form-topup">
+          <label for="inputBalance">Isi Saldo Demo (Rp):</label>
+          <input type="number" id="inputBalance" min="0" step="1000" placeholder="Contoh: 100000" />
+          <button id="setBalance" class="btn small">Set Saldo</button>
+        </div>
+        
+        <div class="form-topup">
+          <label for="inputBet">Taruhan per Putaran (Rp):</label>
+          <input type="number" id="inputBet" min="1000" step="1000" placeholder="Contoh: 10000" />
+          <button id="setBet" class="btn small">Set Taruhan</button>
+        </div>
+
         <div class="balance-row">
-          <div>Saldo demo: <span id="balance">1000</span> koin</div>
-          <div class="small">Taruhan tiap putaran: <span id="bet">10</span></div>
+          <div>Saldo demo: <span id="balance">Rp1.000</span></div>
+          <div class="small">Taruhan tiap putaran: <span id="bet">Rp10</span></div>
         </div>
 
         <div class="machine">

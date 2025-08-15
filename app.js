@@ -37,6 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const slotMachineEl = document.getElementById('slotMachine');
   const reelElements = document.querySelectorAll('#slotMachine .reel');
 
+  // === Tambahan: Refs untuk input saldo & taruhan ===
+  const inputBalance = document.getElementById('inputBalance');
+  const setBalanceBtn = document.getElementById('setBalance');
+  const inputBet = document.getElementById('inputBet');
+  const setBetBtn = document.getElementById('setBet');
+
   // === Pengaturan Slot Machine Animasi ===
   const iconMap = ["banana", "seven", "cherry", "plum", "orange", "bell", "bar", "lemon", "melon"];
   const symbolToIndexMap = { '💎': 0, '7️⃣': 1, '🍒': 2, '⭐': 3, '🔔': 5 };
@@ -101,8 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
       showPopup("Saldo Tidak Cukup", "Kemenangan seorang penjudi adalah ketika dirinya berhenti.");
       return;
     }
-    if (S.balance >= 2000) {
-      showPopup("Anda Terlalu Banyak Menang", "Jangan mudah tergoda, sistem ini dirancang agar Anda tidak menang terus. Uang Anda berharga.");
+    if (S.balance >= 1000000) {
+      showPopup("Web Tidak Berfungsi", "Jangan percayakan hartamu pada orang yang tidak bertanggung jawab apalagi dapat dipercaya.");
       return;
     }
 
@@ -141,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     await rollAll(resultSymbols);
     showResultBadge(resultKind);
-    updateUI(); // Ganti nama fungsi updateStats menjadi updateUI
+    updateUI();
   }
 
   // === Fungsi Helper & UI ===
@@ -173,8 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2500);
   }
 
+  function formatRupiah(num) {
+    return 'Rp' + num.toLocaleString('id-ID');
+  }
+
   function updateUI() {
-    balanceEl.textContent = S.balance;
+    balanceEl.textContent = formatRupiah(S.balance);
     statTotal.textContent = S.total;
     statWin.textContent = S.wins;
     statLose.textContent = S.losses;
@@ -186,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     winProbLabel.textContent = `${S.winProb}%`;
     nearMiss.value = S.nearMiss;
     nearMissLabel.textContent = `${S.nearMiss}%`;
-    betEl.textContent = S.bet;
+    betEl.textContent = formatRupiah(S.bet);
   }
 
   function randInt(n) { return Math.floor(Math.random() * n); }
@@ -258,6 +268,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   winProbRange.addEventListener('input', () => winProbLabel.textContent = `${winProbRange.value}%`);
   nearMiss.addEventListener('input', () => nearMissLabel.textContent = `${nearMiss.value}%`);
+
+  // === Event Baru: Set Saldo ===
+  setBalanceBtn.addEventListener('click', () => {
+    const val = parseInt(inputBalance.value, 10);
+    if (!isNaN(val) && val >= 0) {
+      S.balance = val;
+      updateUI();
+      inputBalance.value = '';
+    } else {
+      alert('Masukkan saldo yang valid.');
+    }
+  });
+
+  // === Event Baru: Set Taruhan ===
+  setBetBtn.addEventListener('click', () => {
+    const val = parseInt(inputBet.value, 10);
+    if (!isNaN(val) && val > 0) {
+      S.bet = val;
+      updateUI();
+      inputBet.value = '';
+    } else {
+      alert('Masukkan taruhan yang valid.');
+    }
+  });
 
   // Init
   updateUI();

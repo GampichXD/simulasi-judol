@@ -299,3 +299,60 @@ body{
   .app{padding:16px}
   .modal-card{width:100%}
 }
+
+/* Form Top-up & Taruhan */
+.form-topup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  background: var(--glass);
+  padding: 10px;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.form-topup label {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.form-topup input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-topup input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.form-topup .btn.small {
+  padding: 8px 12px;
+  font-size: 13px;
+  background: var(--accent);
+  color: #081227;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-topup .btn.small:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.form-topup .btn.small:active {
+  transform: scale(0.95);
+}
+
