@@ -33,13 +33,17 @@
         </div>
 
         <div class="machine">
-          <div id="reel" class="reel">—</div>
+          <div id="slotMachine" class="slots">
+            <div class="reel"></div>
+            <div class="reel"></div>
+            <div class="reel"></div>
+          </div>
           <div id="resultBadge" class="result-badge">Siap</div>
         </div>
 
         <div class="controls">
           <button id="playOnce" class="btn primary">MAIN SEKALI</button>
-          <button id="play10" class="btn">MAIN 10x</button>
+          <button id="play10" class="btn">MAIN 5x</button>
           <button id="resetStats" class="btn ghost">Reset</button>
         </div>
 
@@ -55,15 +59,11 @@
           <li>Kalah: <strong id="statLose">0</strong></li>
           <li>Perc. Menang (aktual): <strong id="statPct">0%</strong></li>
         </ul>
-
         <hr />
-
         <h4>Mode Bandar</h4>
         <div id="modeLabel">Normal</div>
         <div class="hint">Panel bandar bisa atur peluang kemenangan & mode teaser.</div>
-
         <hr />
-
         <h4>Penjelasan Singkat</h4>
         <p class="hint small">Sistem demo ini memperlihatkan bagaimana peluang bisa diatur oleh bandar. Jangan coba taruhan nyata.</p>
       </aside>
@@ -80,25 +80,21 @@
     <div class="modal-card">
       <button class="close" id="closeAdmin">✖</button>
       <h2>Panel Bandar (Admin)</h2>
-
       <div class="form-row">
         <label>Password</label>
         <input type="password" id="adminPass" placeholder="masukkan password" />
         <button id="adminLogin" class="btn">Login</button>
       </div>
-
       <div id="adminPanel" class="admin-panel hidden">
         <div class="form-row">
           <label>Akses Level</label>
           <div id="adminHint" class="small hint">Anda sebagai Bandar.</div>
         </div>
-
         <div class="form-row">
           <label>Probabilitas Menang (%)</label>
           <input type="range" id="winProb" min="0" max="100" value="10" />
           <div class="small">Nilai: <span id="winProbLabel">10%</span></div>
         </div>
-
         <div class="form-row">
           <label>Mode Teaser</label>
           <select id="teaserMode">
@@ -106,23 +102,19 @@
             <option value="simple">Simple (awal tinggi → turun)</option>
           </select>
         </div>
-
         <div class="form-row">
           <label>Teaser: putaran awal (N)</label>
           <input type="number" id="teaserRounds" min="1" max="100" value="5" />
         </div>
-
         <div class="form-row">
           <label>Prob. saat Teaser (%)</label>
           <input type="number" id="teaserProb" min="0" max="100" value="70" />
         </div>
-
         <div class="form-row">
           <label>Near-miss intensity</label>
           <input type="range" id="nearMiss" min="0" max="100" value="30" />
           <div class="small">Nilai: <span id="nearMissLabel">30%</span></div>
         </div>
-
         <div class="form-row actions-row">
           <button id="applyAdmin" class="btn primary">Apply</button>
           <button id="logoutAdmin" class="btn ghost">Logout</button>
@@ -140,6 +132,7 @@
     </div>
   </div>
 
+  <!-- PENTING: Pastikan tag script ini ada di akhir body -->
   <script src="app.js"></script>
 </body>
 </html>
